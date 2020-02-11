@@ -6,12 +6,13 @@ previous = 0
 run = True
 
 def performCalc():
-    problem = input("Enter Your Problem: ")
+    global run
+    problem = input("Enter Your Problem:")
     if problem == 'quit':
         run = False
 
     else:
-         print("Your problem is", problem)
+         print('Your problem is', problem)
 
 while run:
     performCalc()
