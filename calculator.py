@@ -1,18 +1,31 @@
 import re
 
 print("Simple Python calculator")
-print("press 'quit' to exit\n")
-previous = 0
+print("type 'quit' to exit\n")
+initial = 0
 run = True
 
 def performCalc():
     global run
-    problem = input("Enter Your Problem:")
+    global initial
+    problem = ""
+    if initial == 0:   
+         problem = input("Enter Your Problem:")
+    else:
+        problem = input(str(initial))
+
+
     if problem == 'quit':
+        print('Quitting Simple Python Calculator')
         run = False
 
     else:
-         print('Your problem is', problem)
+        problem = re.sub('[a-zA-Z,.:()" "]', '', problem)
+
+        if initial == 0:
+            initial =  eval(problem)
+        else:
+            initial = eval(str(initial) + problem)
 
 while run:
     performCalc()
